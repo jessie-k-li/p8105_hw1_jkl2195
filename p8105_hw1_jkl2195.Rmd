@@ -1,0 +1,33 @@
+---
+title: "p8105_hw1_jkl2195"
+author: "Jessie Li"
+date: "2023-09-17"
+output: github_document
+---
+
+# Problem 1
+```{r}
+# Load libraries tidyverse(contains ggplot) and moderndive(contains dataset early_january_weather)
+library(tidyverse)
+library(moderndive)
+
+
+# Load the early_january_weather dataset
+data(early_january_weather)
+summary(early_january_weather)
+
+```
+
+The names of the variables are `r names(early_january_weather)`. There are `r nrow(early_january_weather)` rows and `r ncol(early_january_weather)` columns in total. The mean value for temp variable is `r mean(early_january_weather$temp)`.
+
+```{r}
+# Renders the scatter plot which temp is the x-axis and time_hour is the y axis. Points are colored using humid variable
+
+time_hour_vs_temp_plot = ggplot(early_january_weather, aes(x=time_hour, y=temp, color=humid)) + geom_point()
+
+# Saves the plot as a png file in the current repo
+ggsave("Temp vs Time Hour.png", time_hour_vs_temp_plot)
+```
+
+# Problem 2
+
